@@ -1,7 +1,7 @@
 -- Drop tables if they exist to avoid errors
 -- SET FOREIGN_KEY_CHECKS = 0;
 
--- -- Drop tables in the order of dependency (least dependent first)
+-- -- Drop tables in § order of dependency (least dependent first)
 -- DROP TABLE IF EXISTS recipe_img, label_recipe, meal_recipe, steps, episode, ep_info;
 -- DROP TABLE IF EXISTS recipe, user, label, meal_type;
 -- DROP TABLE IF EXISTS ingredient, equipment;
@@ -149,3 +149,18 @@ CREATE TABLE episode (
     season INT,
     FOREIGN KEY (image_ID) REFERENCES images(image_ID)
 ) ENGINE=InnoDB;
+
+CREATE TABLE theme (
+    theme_ID INT AUTO_INCREMENT PRIMARY KEY,
+    image_ID INT,
+    theme_name TEXT,
+    theme_desc TEXT,
+    FOREIGN KEY (image_ID) REFERENCES images(image_ID)
+)
+
+CREATE TABLE theme_recipe (
+    theme_ID INT,
+    recipe_ID INT,
+    FOREIGN KEY (theme_ID) REFERENCES theme(theme_ID),
+    FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID)
+)
