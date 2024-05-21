@@ -164,3 +164,44 @@ CREATE TABLE theme_recipe (
     FOREIGN KEY (theme_ID) REFERENCES theme(theme_ID),
     FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID)
 )
+
+CREATE TABLE recipe_ingr (
+    recipe_ID INT,
+    ingredient_ID INT,
+    quantity INT.
+    FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID),
+    FOREIGN KEY (ingredient_ID) REFERENCES ingredient(ingredient_ID)
+)
+
+
+CREATE TABLE recipe_eq (
+    eq_ID INT,
+    recipe_ID INT,
+    FOREIGN KEY (eq_ID) REFERENCES equipment(eq_ID),
+    FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID)
+)
+
+CREATE TABLE national_cuisine (
+    national_cuisine_ID INT AUTO_INCREMENT PRIMARY KEY,
+    cuisine_name VARCHAR(255),
+)
+
+CREATE TABLE expertise (
+    cook_ID INT,
+    national_cuisine_ID INT,
+    FOREIGN KEY (cook_ID) REFERENCES cook(cook_ID),
+    FOREIGN KEY (national_cuisine_ID) REFERENCES national_cuisine(national_cuisine_ID)
+)
+
+CREATE TABLE ep_info (
+    ep_ID INT,
+    cook_ID INT,
+    recipe_ID INT,
+    rating_1 TINYINT,
+    rating_2 TINYINT,
+    rating_3 TINYINT,
+    avg_rating DECIMAL(10, 2),
+    FOREIGN KEY (ep_ID) REFERENCES episode(ep_ID),
+    FOREIGN KEY (cook_ID) REFERENCES cook(cook_ID),
+    FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID)
+)
