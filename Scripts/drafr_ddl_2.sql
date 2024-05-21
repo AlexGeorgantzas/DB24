@@ -5,14 +5,14 @@
 -- DROP TABLE IF EXISTS recipe_img, label_recipe, meal_recipe, steps, episode, ep_info;
 -- DROP TABLE IF EXISTS recipe, user, label, meal_type;
 -- DROP TABLE IF EXISTS ingredient, equipment;
--- DROP TABLE IF EXISTS image, food_group, user_group, cook, national_cuisine, thematic_section, expertise;
+-- DROP TABLE IF EXISTS images, food_group, user_group, cook, national_cuisine, thematic_section, expertise;
 
 -- -- Re-enable foreign key checks after operations
 -- SET FOREIGN_KEY_CHECKS = 1;
 
 
 -- Images table
-CREATE TABLE image (
+CREATE TABLE images (
     image_ID INT AUTO_INCREMENT PRIMARY KEY,
     image_desc TEXT
     image_url TEXT
@@ -25,7 +25,7 @@ CREATE TABLE food_group (
     food_group_name VARCHAR(255) NOT NULL,
     food_group_desc TEXT,
     category VARCHAR(255),
-    FOREIGN KEY (image_ID) REFERENCES image(image_ID)
+    FOREIGN KEY (image_ID) REFERENCES images(image_ID)
 ) ENGINE=InnoDB;
 
 -- Ingredients table
@@ -36,7 +36,7 @@ CREATE TABLE ingredient (
     ingr_name VARCHAR(255) NOT NULL,
     calories DECIMAL(10, 2),
     unit VARCHAR(50),
-    FOREIGN KEY (image_ID) REFERENCES image(image_ID),
+    FOREIGN KEY (image_ID) REFERENCES images(image_ID),
     FOREIGN KEY (food_group_ID) REFERENCES food_group(food_group_ID)
 ) ENGINE=InnoDB;
 
@@ -46,7 +46,7 @@ CREATE TABLE equipment (
     image_ID INT,
     eq_name VARCHAR(255) NOT NULL,
     instructions TEXT,
-    FOREIGN KEY (image_ID) REFERENCES image(image_ID)
+    FOREIGN KEY (image_ID) REFERENCES images(image_ID)
 ) ENGINE=InnoDB;
 
 -- Meal Type table
@@ -66,7 +66,7 @@ CREATE TABLE cook (
     age INT,
     experience INT
     rank INT
-    FOREIGN KEY (image_ID) REFERENCES image(image_ID)
+    FOREIGN KEY (image_ID) REFERENCES images(image_ID)
 ) ENGINE=InnoDB;
 
 -- Recipes table
@@ -123,29 +123,29 @@ CREATE TABLE steps (
     FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID)
 ) ENGINE=InnoDB;
 
--- User table
+-- User table OK
 CREATE TABLE user_table (
     username INT AUTO_INCREMENT PRIMARY KEY,
     user_group_ID INT,
     image_ID INT,
     user_password CHAR(64),
-    FOREIGN KEY (user_group_id) REFERENCES user_group(user_group_id),
-    FOREIGN KEY (image_id) REFERENCES image(image_id)
+    FOREIGN KEY (user_group_ID) REFERENCES user_group(user_group_ID),
+    FOREIGN KEY (image_ID) REFERENCES images(image_ID)
 ) ENGINE=InnoDB;
 
 -- User Group table
 CREATE TABLE user_group (
-    user_group_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255),
-    image_id INT,
-    FOREIGN KEY (image_id) REFERENCES image(image_id)
+    user_group_ID INT AUTO_INCREMENT PRIMARY KEY,
+    group_name VARCHAR(255),
 ) ENGINE=InnoDB;
 
 -- Episodes table
 CREATE TABLE episode (
-    episode_id INT AUTO_INCREMENT PRIMARY KEY,
+    ep_ID INT AUTO_INCREMENT PRIMARY KEY,
+    image_ID INT,
     judge_1 INT,
     judge_2 INT,
     judge_3 INT,
-    season INT
+    season INT,
+    FOREIGN KEY (image_ID) REFERENCES images(image_ID)
 ) ENGINE=InnoDB;
