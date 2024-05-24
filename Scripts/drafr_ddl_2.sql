@@ -10,7 +10,6 @@
 -- -- Re-enable foreign key checks after operations
 -- SET FOREIGN_KEY_CHECKS = 1;
 
-
 -- Images table
 CREATE TABLE images (
     image_ID INT AUTO_INCREMENT PRIMARY KEY,
