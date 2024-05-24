@@ -10,6 +10,25 @@
 -- -- Re-enable foreign key checks after operations
 -- SET FOREIGN_KEY_CHECKS = 1;
 
+DROP DATABASE IF EXISTS RecipeDB;
+
+-- Create database
+CREATE DATABASE IF NOT EXISTS RecipeDB;
+
+-- Use the created database
+USE RecipeDB;
+
+-- Drop tables if they exist to avoid errors
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- Drop tables in order of dependency (least dependent first)
+DROP TABLE IF EXISTS recipe_img, label_recipe, meal_recipe, steps, episode, ep_info;
+DROP TABLE IF EXISTS recipe, user_table, label, meal_type;
+DROP TABLE IF EXISTS ingredient, equipment;
+DROP TABLE IF EXISTS images, food_group, user_group, cook, national_cuisine, theme, theme_recipe, recipe_ingr, recipe_eq, expertise;
+
+-- Re-enable foreign key checks after operations
+SET FOREIGN_KEY_CHECKS = 1;
 
 -- Images table
 CREATE TABLE images (
@@ -69,6 +88,12 @@ CREATE TABLE cook (
     FOREIGN KEY (image_ID) REFERENCES images(image_ID)
 ) ENGINE=InnoDB;
 
+-- National Cuisine table
+CREATE TABLE national_cuisine (
+    national_cuisine_ID INT AUTO_INCREMENT PRIMARY KEY,
+    cuisine_name VARCHAR(255)
+) ENGINE=InnoDB;
+
 -- Recipes table
 CREATE TABLE recipe (
     recipe_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -96,8 +121,13 @@ CREATE TABLE recipe (
 
 -- Meal Type Recipes table
 CREATE TABLE meal_recipe (
+<<<<<<< HEAD
     meal_type_ID INT NOT NULL,
     recipe_ID INT NOT NULL,
+=======
+    meal_type_ID INT,
+    recipe_ID INT,
+>>>>>>> origin/main
     PRIMARY KEY (meal_type_ID, recipe_ID),
     FOREIGN KEY (meal_type_ID) REFERENCES meal_type(meal_type_ID),
     FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID)
@@ -126,7 +156,7 @@ CREATE TABLE steps (
     FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID)
 ) ENGINE=InnoDB;
 
--- User table OK
+-- User table
 CREATE TABLE user_table (
     username INT AUTO_INCREMENT PRIMARY KEY,
     user_group_ID INT NOT NULL,
@@ -139,7 +169,11 @@ CREATE TABLE user_table (
 -- User Group table
 CREATE TABLE user_group (
     user_group_ID INT AUTO_INCREMENT PRIMARY KEY,
+<<<<<<< HEAD
     group_name ENUM( 'user' , 'admin') NOT NULL NOT NULL
+=======
+    group_name VARCHAR(255)
+>>>>>>> origin/main
 ) ENGINE=InnoDB;
 
 -- Episodes table
@@ -163,11 +197,64 @@ CREATE TABLE theme (
     FOREIGN KEY (image_ID) REFERENCES images(image_ID)
 ) ENGINE=InnoDB;
 
+<<<<<<< HEAD
 -- Theme Recipes table
 CREATE TABLE theme_recipe (
     theme_ID INT NOT NULL,
     recipe_ID INT NOT NULL,
+=======
+-- Theme Recipe table
+CREATE TABLE theme_recipe (
+    theme_ID INT,
+    recipe_ID INT,
+>>>>>>> origin/main
     PRIMARY KEY (theme_ID, recipe_ID),
     FOREIGN KEY (theme_ID) REFERENCES theme(theme_ID),
     FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID)
 ) ENGINE=InnoDB;
+<<<<<<< HEAD
+=======
+
+-- Recipe Ingredients table
+CREATE TABLE recipe_ingr (
+    recipe_ID INT,
+    ingredient_ID INT,
+    quantity INT,
+    PRIMARY KEY (recipe_ID, ingredient_ID),
+    FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID),
+    FOREIGN KEY (ingredient_ID) REFERENCES ingredient(ingredient_ID)
+) ENGINE=InnoDB;
+
+-- Recipe Equipment table
+CREATE TABLE recipe_eq (
+    eq_ID INT,
+    recipe_ID INT,
+    PRIMARY KEY (eq_ID, recipe_ID),
+    FOREIGN KEY (eq_ID) REFERENCES equipment(eq_ID),
+    FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID)
+) ENGINE=InnoDB;
+
+-- Expertise table
+CREATE TABLE expertise (
+    cook_ID INT,
+    national_cuisine_ID INT,
+    PRIMARY KEY (cook_ID, national_cuisine_ID),
+    FOREIGN KEY (cook_ID) REFERENCES cook(cook_ID),
+    FOREIGN KEY (national_cuisine_ID) REFERENCES national_cuisine(national_cuisine_ID)
+) ENGINE=InnoDB;
+
+-- Episode Information table
+CREATE TABLE ep_info (
+    ep_ID INT,
+    cook_ID INT,
+    recipe_ID INT,
+    rating_1 TINYINT,
+    rating_2 TINYINT,
+    rating_3 TINYINT,
+    avg_rating DECIMAL(10, 2),
+    PRIMARY KEY (ep_ID, cook_ID, recipe_ID),
+    FOREIGN KEY (ep_ID) REFERENCES episode(ep_ID),
+    FOREIGN KEY (cook_ID) REFERENCES cook(cook_ID),
+    FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID)
+) ENGINE=InnoDB;
+>>>>>>> origin/main
