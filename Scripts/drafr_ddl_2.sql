@@ -37,6 +37,7 @@ CREATE TABLE images (
     image_url TEXT UNIQUE NOT NULL
 ) ENGINE=InnoDB;
 
+
 -- Food Group table
 CREATE TABLE food_group (
     food_group_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -54,7 +55,7 @@ CREATE TABLE ingredient (
     image_ID INT NOT NULL UNIQUE,
     ingr_name VARCHAR(255) NOT NULL UNIQUE ,
     calories DECIMAL(10, 2) NOT NULL CHECK( calories >= 0 AND calories <= 1000),
-    unit ENUM('mL', 'L', 'g')
+    unit ENUM('mL', 'L', 'g'),
     FOREIGN KEY (image_ID) REFERENCES images(image_ID),
     FOREIGN KEY (food_group_ID) REFERENCES food_group(food_group_ID)
 ) ENGINE=InnoDB;
@@ -97,27 +98,28 @@ CREATE TABLE national_cuisine (
 -- Recipes table
 CREATE TABLE recipe (
     recipe_ID INT AUTO_INCREMENT PRIMARY KEY,
-    national_cuisine_ID INT NOT NULL ,
+    national_cuisine_ID INT NOT NULL,
     main_ingredient_ID INT NOT NULL,
     recipe_name VARCHAR(255) NOT NULL UNIQUE,
-    difficulty_level INT NOT NULL CHECK(difficulty_level>=1 AND difficulty_level <= 5),
+    difficulty_level INT NOT NULL CHECK(difficulty_level >= 1 AND difficulty_level <= 5),
     recipe_description TEXT NOT NULL UNIQUE,
-    prep_time INT NOT NULL CHECK(prep_time>=0),
-    cook_time INT NOT NULL CHECK(cook_time>=0),
-    portions INT NOT NULL CHECK(portions>=1),
-    tip_1 TEXT , -- isos kai auto varchar
-    tip_2 TEXT ,
-    tip_3 TEXT ,
+    prep_time INT NOT NULL CHECK(prep_time >= 0),
+    cook_time INT NOT NULL CHECK(cook_time >= 0),
+    portions INT NOT NULL CHECK(portions >= 1),
+    tip_1 TEXT,
+    tip_2 TEXT,
+    tip_3 TEXT,
     fat DECIMAL(10, 1) NOT NULL,
     carbs DECIMAL(10, 1) NOT NULL,
     proteins DECIMAL(10, 1) NOT NULL,
     calories DECIMAL(10, 2) NOT NULL,
-    CONSTRAINT t1_not_t2 CHECK (tip_1 <> tip_2)
-    CONSTRAINT t1_not_t3 CHECK (tip_1 <> tip_3)
-    CONSTRAINT t3_not_t2 CHECK (tip_2 <> tip_3)
+    CONSTRAINT t1_not_t2 CHECK (tip_1 <> tip_2),
+    CONSTRAINT t1_not_t3 CHECK (tip_1 <> tip_3),
+    CONSTRAINT t3_not_t2 CHECK (tip_2 <> tip_3),
     FOREIGN KEY (national_cuisine_ID) REFERENCES national_cuisine(national_cuisine_ID),
     FOREIGN KEY (main_ingredient_ID) REFERENCES ingredient(ingredient_ID)
 ) ENGINE=InnoDB;
+
 
 -- Meal Type Recipes table
 CREATE TABLE meal_recipe (
@@ -151,6 +153,12 @@ CREATE TABLE steps (
     FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID)
 ) ENGINE=InnoDB;
 
+-- User Group table
+CREATE TABLE user_group (
+    user_group_ID INT AUTO_INCREMENT PRIMARY KEY,
+    group_name ENUM('user', 'admin') NOT NULL
+) ENGINE=InnoDB;
+
 -- User table
 CREATE TABLE user_table (
     username INT AUTO_INCREMENT PRIMARY KEY,
@@ -159,12 +167,6 @@ CREATE TABLE user_table (
     user_password CHAR(64) NOT NULL,
     FOREIGN KEY (user_group_ID) REFERENCES user_group(user_group_ID),
     FOREIGN KEY (image_ID) REFERENCES images(image_ID)
-) ENGINE=InnoDB;
-
--- User Group table
-CREATE TABLE user_group (
-    user_group_ID INT AUTO_INCREMENT PRIMARY KEY,
-    group_name ENUM( 'user' , 'admin') NOT NULL NOT NULL
 ) ENGINE=InnoDB;
 
 -- Episodes table
