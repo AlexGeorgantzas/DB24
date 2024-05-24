@@ -121,13 +121,8 @@ CREATE TABLE recipe (
 
 -- Meal Type Recipes table
 CREATE TABLE meal_recipe (
-<<<<<<< HEAD
     meal_type_ID INT NOT NULL,
     recipe_ID INT NOT NULL,
-=======
-    meal_type_ID INT,
-    recipe_ID INT,
->>>>>>> origin/main
     PRIMARY KEY (meal_type_ID, recipe_ID),
     FOREIGN KEY (meal_type_ID) REFERENCES meal_type(meal_type_ID),
     FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID)
@@ -169,11 +164,7 @@ CREATE TABLE user_table (
 -- User Group table
 CREATE TABLE user_group (
     user_group_ID INT AUTO_INCREMENT PRIMARY KEY,
-<<<<<<< HEAD
     group_name ENUM( 'user' , 'admin') NOT NULL NOT NULL
-=======
-    group_name VARCHAR(255)
->>>>>>> origin/main
 ) ENGINE=InnoDB;
 
 -- Episodes table
@@ -197,23 +188,14 @@ CREATE TABLE theme (
     FOREIGN KEY (image_ID) REFERENCES images(image_ID)
 ) ENGINE=InnoDB;
 
-<<<<<<< HEAD
 -- Theme Recipes table
 CREATE TABLE theme_recipe (
     theme_ID INT NOT NULL,
     recipe_ID INT NOT NULL,
-=======
--- Theme Recipe table
-CREATE TABLE theme_recipe (
-    theme_ID INT,
-    recipe_ID INT,
->>>>>>> origin/main
     PRIMARY KEY (theme_ID, recipe_ID),
     FOREIGN KEY (theme_ID) REFERENCES theme(theme_ID),
     FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID)
 ) ENGINE=InnoDB;
-<<<<<<< HEAD
-=======
 
 -- Recipe Ingredients table
 CREATE TABLE recipe_ingr (
@@ -257,4 +239,3 @@ CREATE TABLE ep_info (
     FOREIGN KEY (cook_ID) REFERENCES cook(cook_ID),
     FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID)
 ) ENGINE=InnoDB;
->>>>>>> origin/main
