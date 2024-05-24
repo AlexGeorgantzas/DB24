@@ -14,28 +14,28 @@
 -- Images table
 CREATE TABLE images (
     image_ID INT AUTO_INCREMENT PRIMARY KEY,
-    image_desc TEXT ,
-    image_url TEXT NOT NULL
+    image_desc TEXT UNIQUE,
+    image_url TEXT UNIQUE NOT NULL
 ) ENGINE=InnoDB;
 
 -- Food Group table
 CREATE TABLE food_group (
     food_group_ID INT AUTO_INCREMENT PRIMARY KEY,
-    image_ID INT NOT NULL,
-    food_group_name VARCHAR(255) NOT NULL,
-    food_group_desc TEXT NOT NULL,
-    category VARCHAR(255) NOT NULL,
+    image_ID INT NOT NULL UNIQUE,
+    food_group_name VARCHAR(255) NOT NULL UNIQUE,
+    food_group_desc TEXT ,
+    category VARCHAR(255) NOT NULL, -- UNIQUE?
     FOREIGN KEY (image_ID) REFERENCES images(image_ID)
 ) ENGINE=InnoDB;
 
 -- Ingredients table
 CREATE TABLE ingredient (
     ingredient_ID INT AUTO_INCREMENT PRIMARY KEY,
-    food_group_ID INT NOT NULL,
-    image_ID INT NOT NULL,
-    ingr_name VARCHAR(255) NOT NULL,
-    calories DECIMAL(10, 2) NOT NULL,
-    unit VARCHAR(50) NOT NULL,
+    food_group_ID INT NOT NULL UNIQUE,
+    image_ID INT NOT NULL UNIQUE,
+    ingr_name VARCHAR(255) NOT NULL UNIQUE ,
+    calories DECIMAL(10, 2) NOT NULL CHECK( calories >= 0 AND calories <= 1000),
+    unit ENUM('mL', 'L', 'g')
     FOREIGN KEY (image_ID) REFERENCES images(image_ID),
     FOREIGN KEY (food_group_ID) REFERENCES food_group(food_group_ID)
 ) ENGINE=InnoDB;
@@ -43,8 +43,8 @@ CREATE TABLE ingredient (
 -- Equipment table
 CREATE TABLE equipment (
     eq_ID INT AUTO_INCREMENT PRIMARY KEY,
-    image_ID INT NOT NULL,
-    eq_name VARCHAR(255) NOT NULL,
+    image_ID INT NOT NULL UNIQUE,
+    eq_name VARCHAR(255) NOT NULL UNIQUE,
     instructions TEXT NOT NULL,
     FOREIGN KEY (image_ID) REFERENCES images(image_ID)
 ) ENGINE=InnoDB;
@@ -52,41 +52,44 @@ CREATE TABLE equipment (
 -- Meal Type table
 CREATE TABLE meal_type (
     meal_type_ID INT AUTO_INCREMENT PRIMARY KEY,
-    meal_type_name VARCHAR(255) NOT NULL
+    meal_type_name ENUM('breakfast', 'lunch', 'dinner', 'snack', 'dessert') NOT NULL
 ) ENGINE=InnoDB;
 
 -- Cook table
 CREATE TABLE cook (
     cook_ID INT AUTO_INCREMENT PRIMARY KEY,
-    image_ID INT NOT NULL,
+    image_ID INT UNIQUE,
     firstname VARCHAR(255) NOT NULL,
     lastname VARCHAR(255) NOT NULL,
-    phone_number VARCHAR(20) NOT NULL,
-    date_of_birth DATE NOT NULL,
-    age INT NOT NULL,
-    experience INT NOT NULL,
-    rank INT NOT NULL,
+    phone_number VARCHAR(20) NOT NULL UNIQUE,
+    date_of_birth DATE NOT NULL, 
+    age INT NOT NULL CHECK(age >= 18 AND age <= 100),
+    experience INT NOT NULL CHECK(experience >= 0 AND experience <=100),  
+    rank ENUM('cook C', 'cook B' , 'cook A' , 'assistant chef' , 'chef')  NOT NULL,  
     FOREIGN KEY (image_ID) REFERENCES images(image_ID)
 ) ENGINE=InnoDB;
 
 -- Recipes table
 CREATE TABLE recipe (
     recipe_ID INT AUTO_INCREMENT PRIMARY KEY,
-    national_cuisine_ID INT NOT NULL,
+    national_cuisine_ID INT NOT NULL ,
     main_ingredient_ID INT NOT NULL,
-    recipe_name VARCHAR(255) NOT NULL,
-    difficulty_level INT NOT NULL,
-    recipe_description TEXT NOT NULL,
-    prep_time INT NOT NULL,
-    cook_time INT NOT NULL,
-    portions INT NOT NULL,
-    tip_1 TEXT ,
+    recipe_name VARCHAR(255) NOT NULL UNIQUE,
+    difficulty_level INT NOT NULL CHECK(difficulty_level>=1 AND difficulty_level <= 5),
+    recipe_description TEXT NOT NULL UNIQUE,
+    prep_time INT NOT NULL CHECK(prep_time>=0),
+    cook_time INT NOT NULL CHECK(cook_time>=0),
+    portions INT NOT NULL CHECK(portions>=1),
+    tip_1 TEXT , -- isos kai auto varchar
     tip_2 TEXT ,
     tip_3 TEXT ,
     fat DECIMAL(10, 1) NOT NULL,
     carbs DECIMAL(10, 1) NOT NULL,
     proteins DECIMAL(10, 1) NOT NULL,
     calories DECIMAL(10, 2) NOT NULL,
+    CONSTRAINT t1_not_t2 CHECK (tip_1 <> tip_2)
+    CONSTRAINT t1_not_t3 CHECK (tip_1 <> tip_3)
+    CONSTRAINT t3_not_t2 CHECK (tip_2 <> tip_3)
     FOREIGN KEY (national_cuisine_ID) REFERENCES national_cuisine(national_cuisine_ID),
     FOREIGN KEY (main_ingredient_ID) REFERENCES ingredient(ingredient_ID)
 ) ENGINE=InnoDB;
@@ -136,26 +139,27 @@ CREATE TABLE user_table (
 -- User Group table
 CREATE TABLE user_group (
     user_group_ID INT AUTO_INCREMENT PRIMARY KEY,
-    group_name VARCHAR(255) NOT NULL
+    group_name ENUM( 'user' , 'admin') NOT NULL NOT NULL
 ) ENGINE=InnoDB;
 
 -- Episodes table
 CREATE TABLE episode (
-    ep_ID INT AUTO_INCREMENT PRIMARY KEY,
+    ep_ID INT AUTO_INCREMENT PRIMARY KEY ,
     image_ID INT NOT NULL,
     judge_1 INT NOT NULL,
     judge_2 INT NOT NULL,
     judge_3 INT NOT NULL,
-    season INT NOT NULL,
+    season INT NOT NULL CHECK(season >=1),
+    episode INT NOT NULL CHECK(episode >=1 AND episode<=10),
     FOREIGN KEY (image_ID) REFERENCES images(image_ID)
 ) ENGINE=InnoDB;
 
 -- Theme table
 CREATE TABLE theme (
     theme_ID INT AUTO_INCREMENT PRIMARY KEY,
-    image_ID INT NOT NULL,
-    theme_name TEXT NOT NULL,
-    theme_desc TEXT NOT NULL,
+    image_ID INT NOT NULL UNIQUE,
+    theme_name TEXT NOT NULL UNIQUE,
+    theme_desc TEXT NOT NULL UNIQUE,
     FOREIGN KEY (image_ID) REFERENCES images(image_ID)
 ) ENGINE=InnoDB;
 
@@ -163,6 +167,7 @@ CREATE TABLE theme (
 CREATE TABLE theme_recipe (
     theme_ID INT NOT NULL,
     recipe_ID INT NOT NULL,
+    PRIMARY KEY (theme_ID, recipe_ID),
     FOREIGN KEY (theme_ID) REFERENCES theme(theme_ID),
     FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID)
 ) ENGINE=InnoDB;
