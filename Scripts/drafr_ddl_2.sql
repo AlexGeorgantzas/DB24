@@ -167,7 +167,7 @@ CREATE  TABLE user_table (
     user_ID INT AUTO_INCREMENT PRIMARY KEY,    
     username VARCHAR(255) NOT NULL UNIQUE ,
     group_name ENUM( 'user' , 'admin') NOT NULL  DEFAULT 'user',
-    user_password CHAR(64) NOT NULL UNIQUE
+    user_password CHAR(64) NOT NULL
 ) ENGINE=InnoDB;
 
 -- Episodes table
