@@ -16,8 +16,10 @@ INSERT INTO food_group (image_ID,food_group_name, food_group_desc, category) VAL
 INSERT INTO food_group (image_ID,food_group_name, food_group_desc, category) VALUES (1,'Added Fats and Oils  Olives  and Nuts', 'Healthy fats from oils  olives  and nuts  important for heart health and overall wellness.', 'oils');
 
 
+select * from Ingredient;
 
 /*ingredients */
+desc ingredient;
 
 INSERT INTO Ingredient (ingr_name, calories, unit, food_group_id, image_ID) VALUES ('chickpeas', '23.45', 'gr', '5', '1');
 INSERT INTO Ingredient (ingr_name, calories, unit, food_group_id, image_ID) VALUES ('chicken breast', '9', 'gr', '7', '1');
@@ -138,7 +140,8 @@ INSERT INTO Ingredient (ingr_name, calories, unit, food_group_id, image_ID) VALU
 
 
 /*equipment*/
-
+desc equipment;
+select * from equipment;
 INSERT INTO equipment (eq_name, instructions, image_ID) VALUES ('Measuring spoons', 'Measure small quantities of ingredients precisely.', '1');
 INSERT INTO equipment (eq_name, instructions, image_ID) VALUES ('Food processor', 'Chop  slice  and blend ingredients quickly.', '1');
 INSERT INTO equipment (eq_name, instructions, image_ID) VALUES ('Dutch oven', 'Use for slow cooking and braising dishes.', '1');
@@ -182,7 +185,8 @@ INSERT INTO equipment (eq_name, instructions, image_ID) VALUES ('Garlic press', 
 
 
 /*cook*/
-
+desc cook;
+select* from cook;
 INSERT INTO Cook (user_id, firstname, lastname, phone_number, date_of_birth, experience, rank, image_ID) VALUES ('1', 'Mitsaras', 'Ferguson', '6987350255', '1961-06-02', '5', 'Cook C', '1');
 INSERT INTO Cook (user_id, firstname, lastname, phone_number, date_of_birth, experience, rank, image_ID) VALUES ('2', 'Scott', 'Thomas', '6986702095', '1969-08-26', '6', 'Cook B', '1');
 INSERT INTO Cook (user_id, firstname, lastname, phone_number, date_of_birth, experience, rank, image_ID) VALUES ('3', 'Anna', 'Moore', '6985537148', '1976-04-22', '7', 'Cook A', '1');
@@ -236,7 +240,6 @@ INSERT INTO Cook (user_id, firstname, lastname, phone_number, date_of_birth, exp
 INSERT INTO Cook (user_id, firstname, lastname, phone_number, date_of_birth, experience, rank, image_ID) VALUES ('51', 'Daniel', 'Cook', '6987532107', '1953-01-18', '10', 'Cook B', '1');
 
 
-
 /*meal_type*/
 INSERT INTO meal_type (meal_type_name) VALUES ('breakfast');
 INSERT INTO meal_type (meal_type_name) VALUES ('dessert');
@@ -246,7 +249,8 @@ INSERT INTO meal_type (meal_type_name) VALUES ('dinner');
 
 
 /*national_cuisine*/
-
+desc national_cuisine;
+select* from national_cuisine;
 INSERT INTO National_cuisine (cuisine_name) VALUES ('American');
 INSERT INTO National_cuisine (cuisine_name) VALUES ('Chinese');
 INSERT INTO National_cuisine (cuisine_name) VALUES ('French');
@@ -269,7 +273,8 @@ INSERT INTO National_cuisine (cuisine_name) VALUES ('Vietnamese');
 INSERT INTO National_cuisine (cuisine_name) VALUES ('Tanzanian');
 
 /*recipe*/
-
+desc recipe;
+select* from recipe;
 INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) VALUES ('9', '2', 'Balsamic Chicken Caprese recipe', '1', 'The freshest summer tomatoes shine in this five-ingredient supper.', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
 INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) VALUES ('4', '2', 'Chicken  Pepper and Pineapple Skewers recipe', '4', 'Pick from chicken breast or thighs to build these smoky skewers. Who doesnt love dinner on a stick?!', '24', '91', '4', 'Chill mixing bowls for cream.', '', '', '5', '12', '5');
 INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) VALUES ('5', '48', 'spiralized zucchini', '5', 'Put your bumper crop to good use by mixing spiralized zucchini with spaghetti. Sauteed chicken ups the protein.', '32', '41', '4', 'Add herbs at the end.', '', '', '32', '23', '25');
@@ -356,82 +361,11 @@ INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, diffic
 INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) VALUES ('5', '7', 'Greek Salad recipe', '4', 'Ready for fall? Showcase the seasons popular squash in the most delicious way possible: sweet and caramelized  courtesy of a short stint in the oven.', '46', '108', '2', 'Use a bench scraper for dough.', 'Blanch nuts before peeling.', 'Keep ingredients organized.', '53', '58', '35');
 INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) VALUES ('8', '2', 'low-calorie dinner', '3', 'This ultra-hydrating salad stars sliced cucumbers and honeydew melon tossed in a fiery sambal dressing. Serve it with your protein of choice. Grilled chicken  anyone?', '17', '58', '4', 'Rest meat after cooking.', 'Degrease soups for clarity.', '', '23', '26', '45');
 INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) VALUES ('9', '2', 'Seared Steak and Rye Panzanella recipe', '3', 'Rhubarb is only available for a short period of time (read: March through May)  so when you see it in the supermarket  add to your cart immediately. Then  go home and make this.', '6', '60', '8', 'Score bread for even baking.', 'Let soup rest before serving.', '', '23', '58', '69');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('12', '2', 'a', '1', 'a', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('12', '2', 'b', '1', 'b', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('12', '2', 'c', '1', 'c', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('12', '2', 'd', '1', 'd', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('13', '2', 'aa', '1', 'aa', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('13', '2', 'bb', '1', 'bb', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('13', '2', 'cc', '1', 'cc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('13', '2', 'dd', '1', 'dd', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('14', '2', 'aaa', '1', 'aaa', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('14', '2', 'bbb', '1', 'bbb', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('14', '2', 'ccc', '1', 'ccc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('14', '2', 'ddd', '1', 'ddd', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('15', '2', 'aaaa', '1', 'aaaa', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('15', '2', 'bbbb', '1', 'bbbb', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('15', '2', 'cccc', '1', 'cccc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('15', '2', 'dddd', '1', 'dddd', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('16', '2', 'aaaaa', '1', 'aaaaa', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('16', '2', 'bbbbb', '1', 'bbbbb', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('16', '2', 'ccccc', '1', 'ccccc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('16', '2', 'ddddd', '1', 'ddddd', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('17', '2', 'aaaaaa', '1', 'aaaaaa', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('17', '2', 'bbbbbb', '1', 'bbbbbb', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('17', '2', 'cccccc', '1', 'cccccc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('17', '2', 'dddddd', '1', 'dddddd', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('18', '2', 'aaaaaaa', '1', 'aaaaaaa', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('18', '2', 'bbbbbbb', '1', 'bbbbbbb', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('18', '2', 'ccccccc', '1', 'ccccccc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('18', '2', 'ddddddd', '1', 'ddddddd', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('19', '2', 'ab', '1', 'ab', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('19', '2', 'ac', '1', 'ac', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('19', '2', 'ad', '1', 'ad', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('19', '2', 'ae', '1', 'ae', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('20', '2', 'abc', '1', 'abc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('20', '2', 'acc', '1', 'acc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('20', '2', 'adc', '1', 'adc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
-INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
-VALUES ('20', '2', 'aec', '1', 'aec', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
 
 
 /*meal_recipe*/
-
+desc meal_recipe;
+select* from meal_recipe;
 INSERT INTO meal_recipe (meal_type_id, recipe_id) VALUES ('1', '1');
 INSERT INTO meal_recipe (meal_type_id, recipe_id) VALUES ('3', '2');
 INSERT INTO meal_recipe (meal_type_id, recipe_id) VALUES ('2', '2');
@@ -555,7 +489,8 @@ INSERT INTO meal_recipe (meal_type_id, recipe_id) VALUES ('5', '86');
 
 
 /*label*/
-
+desc label;
+select* from label;
 INSERT INTO label (label_description) VALUES ('The freshest summer tomatoes shine in this five-ingredient supper.');
 INSERT INTO label (label_description) VALUES ('Pick from chicken breast or thighs to build these smoky skewers. Who doesnt love dinner on a stick?!');
 INSERT INTO label (label_description) VALUES ('Put your bumper crop to good use by mixing spiralized zucchini with spaghetti. Sauteed chicken ups the protein.');
@@ -668,7 +603,8 @@ INSERT INTO label (label_description) VALUES ('Paleo');
 INSERT INTO label (label_description) VALUES ('Keto');
 
 /*label_recipe*/
-
+desc label_recipe;
+select* from label_recipe;
 INSERT INTO label_recipe (label_id, recipe_id) VALUES ('1', '1');
 INSERT INTO label_recipe (label_id, recipe_id) VALUES ('2', '2');
 INSERT INTO label_recipe (label_id, recipe_id) VALUES ('3', '3');
@@ -785,7 +721,8 @@ INSERT INTO label_recipe (label_id, recipe_id) VALUES ('109', '12');
 
 
 /*steps*/
-
+desc steps;
+select* from steps;
 INSERT INTO steps (Recipe_id, step_description, sequence_number) VALUES ('1', 'Step 1Heat oven to 400Â°F. Heat oil in large ovenproof skillet on medium-high. Season chicken with 1/2 teaspoon salt and 1/4 teaspoon pepper and cook until deep golden brown on 1 side  4 to 5 minutes.', '1');
 INSERT INTO steps (Recipe_id, step_description, sequence_number) VALUES ('1', 'Step 2Flip chicken and cookÂ 1 minute. Reduce heatÂ to medium  add balsamic vinegar and gently simmer until slightly thickened and syrupy Â 1 to 2 minutes. Transfer skilletÂ to oven and roast 10 minutes.', '2');
 INSERT INTO steps (Recipe_id, step_description, sequence_number) VALUES ('1', 'Step 3Turn chicken to coat in vinegar  top with mozzarella and roast until chicken registers 165Â°F on instant-read thermometer and cheese begins to melt  about 2 minutes.', '3');
@@ -865,63 +802,65 @@ INSERT INTO steps (Recipe_id, step_description, sequence_number) VALUES ('18', '
 
 
 /*user_table*/
-
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Glenn_Ferguson', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Scott_Thomas', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Anna_Moore', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Katherine_Baker', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Brenda_Walker', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Andrew_Carter', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Michelle_Gonzales', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Nicholas_Perez', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Pamela_Patterson', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Kenneth_Alexander', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Christina_Hernandez', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Erin_Gray', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'David_Reed', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Amanda_Torres', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Angela_Morris', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Mary_Richardson', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Jennifer_Mitchell', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'John_Evans', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'William_White', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Ryan_Gomez', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Patricia_Parker', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Michael_Green', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Richard_Cooper', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Stephen_Wright', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Laura_King', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Amy_Hill', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Thomas_Campbell', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Debra_Murphy', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'George_Stewart', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Sharon_Young', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Christopher_Robinson', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Joseph_Nelson', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Mark_Peterson', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Dorothy_Howard', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Susan_Hughes', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Sarah_Lee', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Paul_Ward', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Cynthia_Sanders', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Megan_Flores', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Nancy_Butler', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Donald_Barnes', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Lisa_Cook', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Charles_Adams', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Barbara_Long', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Jessica_Brooks', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Robert_Hughes', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Linda_Price', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Kimberly_Bryant', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'James_Jenkins', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Karen_Diaz', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'Daniel_Cook', '123');
-INSERT INTO user_table (group_name, username, user_password) VALUES ('2', 'administrator', '123');
+desc user_table;
+select* from user_table;
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Glenn_Ferguson', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Scott_Thomas', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Anna_Moore', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Katherine_Baker', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Brenda_Walker', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Andrew_Carter', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Michelle_Gonzales', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Nicholas_Perez', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Pamela_Patterson', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Kenneth_Alexander', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Christina_Hernandez', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Erin_Gray', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'David_Reed', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Amanda_Torres', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Angela_Morris', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Mary_Richardson', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Jennifer_Mitchell', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'John_Evans', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'William_White', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Ryan_Gomez', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Patricia_Parker', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Michael_Green', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Richard_Cooper', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Stephen_Wright', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Laura_King', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Amy_Hill', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Thomas_Campbell', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Debra_Murphy', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'George_Stewart', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Sharon_Young', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Christopher_Robinson', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Joseph_Nelson', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Mark_Peterson', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Dorothy_Howard', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Susan_Hughes', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Sarah_Lee', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Paul_Ward', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Cynthia_Sanders', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Megan_Flores', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Nancy_Butler', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Donald_Barnes', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Lisa_Cook', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Charles_Adams', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Barbara_Long', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Jessica_Brooks', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Robert_Hughes', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Linda_Price', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Kimberly_Bryant', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'James_Jenkins', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Karen_Diaz', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('0', 'Daniel_Cook', '123');
+INSERT INTO user_table (group_name, username, user_password) VALUES ('1', 'administrator', '123');
 
 
 /*theme*/
-
+desc theme;
+select* from theme;
 INSERT INTO theme (theme_name, theme_desc, image_ID) VALUES ('Village Recipes', 'Traditional recipes from the village, made with pure ingredients and lots of love.', '1');
 INSERT INTO theme (theme_name, theme_desc, image_ID) VALUES ('Risotto Recipes', 'Delicious risottos for every occasion, from classic to gourmet.', '1');
 INSERT INTO theme (theme_name, theme_desc, image_ID) VALUES ('Easter Desserts', 'Easter desserts perfect for the Easter table that will impress.', '1');
@@ -975,7 +914,8 @@ INSERT INTO theme (theme_name, theme_desc, image_ID) VALUES ('Weekend Baking Pro
 
 
 /*theme_recipe*/
-
+desc theme_recipe;
+select* from theme_recipe;
 INSERT INTO theme_recipe (theme_id, recipe_id) VALUES ('26', '1');
 INSERT INTO theme_recipe (theme_id, recipe_id) VALUES ('19', '1');
 INSERT INTO theme_recipe (theme_id, recipe_id) VALUES ('29', '1');
@@ -1218,7 +1158,8 @@ INSERT INTO theme_recipe (theme_id, recipe_id) VALUES ('49', '86');
 
 
 /*recipe_ingr*/
-
+desc recipe_ingr;
+select* from recipe_ingr;
 INSERT INTO recipe_ingr (recipe_id, ingredient_id, quantity) VALUES ('1', '29', '178');
 INSERT INTO recipe_ingr (recipe_id, ingredient_id, quantity) VALUES ('1', '91', '212');
 INSERT INTO recipe_ingr (recipe_id, ingredient_id, quantity) VALUES ('1', '42', '129');
@@ -1461,7 +1402,8 @@ INSERT INTO recipe_ingr (recipe_id, ingredient_id, quantity) VALUES ('86', '58',
 
 
 /*recipe_ingr*/
-
+desc recipe_eq;
+select* from recipe_eq;
 INSERT INTO recipe_eq (recipe_id, eq_id) VALUES ('1', '5');
 INSERT INTO recipe_eq (recipe_id, eq_id) VALUES ('1', '3');
 INSERT INTO recipe_eq (recipe_id, eq_id) VALUES ('1', '8');
@@ -1628,7 +1570,8 @@ INSERT INTO recipe_eq (recipe_id, eq_id) VALUES ('86', '2');
 
 
 /*expertise*/
-
+desc expertise;
+select* from expertise;
 INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('1', '2');
 INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('1', '9');
 INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('1', '13');
@@ -1664,7 +1607,7 @@ INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('13', '7');
 INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('13', '11');
 INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('13', '4');
 INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('14', '10');
-INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('14', '19');
+INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('14', '20');
 INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('15', '2');
 INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('15', '9');
 INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('16', '13');
@@ -1684,7 +1627,7 @@ INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('21', '9');
 INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('22', '2');
 INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('22', '11');
 INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('23', '1');
-INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('23', '18');
+INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('23', '20');
 INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('23', '5');
 INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('24', '17');
 INSERT INTO expertise (cook_id, national_cuisine_id) VALUES ('24', '6');
