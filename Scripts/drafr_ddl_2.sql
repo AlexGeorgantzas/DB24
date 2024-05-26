@@ -57,7 +57,9 @@ CREATE  TABLE ingredient (
     ingr_name VARCHAR(255) NOT NULL UNIQUE ,
     calories DECIMAL(10, 2) NOT NULL CHECK( calories >= 0 AND calories <= 1000),
     unit ENUM('mL', 'L', 'gr' ,'table spoon' , 'tea spoon' , 'N/A'),
-    UNIQUE INDEX ingr_group_image_idx (ingredient_ID ASC, food_group_ID ASC, image_ID ASC),
+    UNIQUE INDEX ingr_group_image_idx (ingredient_ID ASC, food_group_ID ASC),
+    INDEX fk_image_ID_idx (image_ID ASC),
+    INDEX fk_food_group_ID_idx (food_group_ID ASC),
     FOREIGN KEY (image_ID) REFERENCES images(image_ID) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (food_group_ID) REFERENCES food_group(food_group_ID) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
@@ -88,7 +90,8 @@ CREATE  TABLE cook (
     phone_number VARCHAR(20) NOT NULL UNIQUE,
     date_of_birth DATE NOT NULL, 
     experience INT NOT NULL CHECK(experience >= 0 AND experience <=100),  
-    rank ENUM('cook C', 'cook B' , 'cook A' , 'assistant chef' , 'chef')  NOT NULL,  
+    rank ENUM('cook C', 'cook B' , 'cook A' , 'assistant chef' , 'chef')  NOT NULL,
+    UNIQUE INDEX cook_user_idx (cook_ID ASC, user_ID ASC),
     INDEX fk_image_id_idx (image_ID ASC),
     FOREIGN KEY (image_ID) REFERENCES images(image_ID) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
@@ -146,8 +149,8 @@ CREATE  TABLE label (
 CREATE  TABLE label_recipe (
     label_ID INT NOT NULL,
     recipe_ID INT NOT NULL,
-    PRIMARY KEY (label_ID, recipe_ID),
-    -- UNIQUE INDEX 'label_recipe_idx' ('label_ID' ASC, 'recipe_ID' ASC),
+    /*PRIMARY KEY (label_ID, recipe_ID),*/
+    UNIQUE INDEX recipe_label_idx (label_ID ASC, recipe_ID ASC),
     FOREIGN KEY (label_ID) REFERENCES label(label_ID) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (recipe_ID) REFERENCES recipe(recipe_ID) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
