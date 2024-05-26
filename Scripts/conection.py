@@ -2,8 +2,10 @@ import mysql.connector
 from mysql.connector import Error
 
 try:
-    userName = input("Enter DB Username: ").strip()
-    pswd = input("Enter DB Password: ").strip()
+    #userName = input("Enter DB Username: ").strip()
+    userName = "root"
+    #pswd = input("Enter DB Password: ").strip()
+    pswd = "2255"
 
     conn = mysql.connector.connect(
         host="localhost",

@@ -2,8 +2,6 @@
 insert into images (image_desc, image_url) values('test', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.delish.com%2Fcooking%2Frecipe-ideas%2Frecipes%2Fa52114%2Feasy-basic-crepe-recipe%2F&psig=AOvVaw0FPuwJVgUgzNg4utHzcAZ-&ust=1716736759115000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCFoveMqYYDFQAAAAAdAAAAABAE');
 
 
-
-/*food_group*/
 INSERT INTO food_group (image_ID,food_group_name, food_group_desc, category) VALUES (1,'Vegetables', 'A variety of fresh  colorful vegetables that provide essential vitamins  minerals  and fiber.', 'vegeterian');
 INSERT INTO food_group (image_ID,food_group_name, food_group_desc, category) VALUES (1,'Fruits', 'Sweet and nutritious fruits  rich in vitamins  antioxidants  and natural sugars.', 'fruits');
 INSERT INTO food_group (image_ID,food_group_name, food_group_desc, category) VALUES (1,'Cereals (bread  rice  pasta) and Potatoes', 'A range of cereals including bread  rice  and pasta  along with nutrient-dense potatoes.', 'cereals');
