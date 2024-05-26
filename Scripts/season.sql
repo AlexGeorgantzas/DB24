@@ -1,3 +1,6 @@
+CREATE PROCEDURE AssignCooksAndJudges()
+BEGIN
+
 drop table if exists  temp_cuisines;
 CREATE TEMPORARY TABLE temp_cuisines AS
 SELECT DISTINCT national_cuisine_ID
@@ -120,3 +123,6 @@ SELECT
     0 AS avg_rating
 FROM 
     eps;
+
+
+END
