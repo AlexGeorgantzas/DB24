@@ -1,6 +1,8 @@
+--populate 
 /*images*/
 insert into images (image_desc, image_url) values('test', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.delish.com%2Fcooking%2Frecipe-ideas%2Frecipes%2Fa52114%2Feasy-basic-crepe-recipe%2F&psig=AOvVaw0FPuwJVgUgzNg4utHzcAZ-&ust=1716736759115000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCFoveMqYYDFQAAAAAdAAAAABAE');
 
+select * from food_group
 
 
 /*food_group*/
@@ -16,7 +18,7 @@ INSERT INTO food_group (image_ID,food_group_name, food_group_desc, category) VAL
 INSERT INTO food_group (image_ID,food_group_name, food_group_desc, category) VALUES (1,'Added Fats and Oils  Olives  and Nuts', 'Healthy fats from oils  olives  and nuts  important for heart health and overall wellness.', 'oils');
 
 
-select * from Ingredient;
+--select * from Ingredient;
 
 /*ingredients */
 desc ingredient;
@@ -362,6 +364,78 @@ INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, diffic
 INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) VALUES ('5', '7', 'Greek Salad recipe', '4', 'Ready for fall? Showcase the seasons popular squash in the most delicious way possible: sweet and caramelized  courtesy of a short stint in the oven.', '46', '108', '2', 'Use a bench scraper for dough.', 'Blanch nuts before peeling.', 'Keep ingredients organized.', '53', '58', '35');
 INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) VALUES ('8', '2', 'low-calorie dinner', '3', 'This ultra-hydrating salad stars sliced cucumbers and honeydew melon tossed in a fiery sambal dressing. Serve it with your protein of choice. Grilled chicken  anyone?', '17', '58', '4', 'Rest meat after cooking.', 'Degrease soups for clarity.', '', '23', '26', '45');
 INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) VALUES ('9', '2', 'Seared Steak and Rye Panzanella recipe', '3', 'Rhubarb is only available for a short period of time (read: March through May)  so when you see it in the supermarket  add to your cart immediately. Then  go home and make this.', '6', '60', '8', 'Score bread for even baking.', 'Let soup rest before serving.', '', '23', '58', '69');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('12', '2', 'a', '1', 'a', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('12', '2', 'b', '1', 'b', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('12', '2', 'c', '1', 'c', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('12', '2', 'd', '1', 'd', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('13', '2', 'aa', '1', 'aa', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('13', '2', 'bb', '1', 'bb', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('13', '2', 'cc', '1', 'cc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('13', '2', 'dd', '1', 'dd', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('14', '2', 'aaa', '1', 'aaa', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('14', '2', 'bbb', '1', 'bbb', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('14', '2', 'ccc', '1', 'ccc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('14', '2', 'ddd', '1', 'ddd', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('15', '2', 'aaaa', '1', 'aaaa', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('15', '2', 'bbbb', '1', 'bbbb', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('15', '2', 'cccc', '1', 'cccc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('15', '2', 'dddd', '1', 'dddd', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('16', '2', 'aaaaa', '1', 'aaaaa', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('16', '2', 'bbbbb', '1', 'bbbbb', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('16', '2', 'ccccc', '1', 'ccccc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('16', '2', 'ddddd', '1', 'ddddd', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('17', '2', 'aaaaaa', '1', 'aaaaaa', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('17', '2', 'bbbbbb', '1', 'bbbbbb', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('17', '2', 'cccccc', '1', 'cccccc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('17', '2', 'dddddd', '1', 'dddddd', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('18', '2', 'aaaaaaa', '1', 'aaaaaaa', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('18', '2', 'bbbbbbb', '1', 'bbbbbbb', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('18', '2', 'ccccccc', '1', 'ccccccc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('18', '2', 'ddddddd', '1', 'ddddddd', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('19', '2', 'ab', '1', 'ab', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('19', '2', 'ac', '1', 'ac', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('19', '2', 'ad', '1', 'ad', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('19', '2', 'ae', '1', 'ae', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('20', '2', 'abc', '1', 'abc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('20', '2', 'acc', '1', 'acc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('20', '2', 'adc', '1', 'adc', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
+INSERT INTO Recipe (national_cuisine_id, main_ingredient_ID, recipe_Name, difficulty_level, recipe_description, prep_time, cook_time, portions, tip_1, tip_2, tip_3, fat, carbs, proteins) 
+VALUES ('20', '2', 'aec', '1', 'aec', '19', '47', '4', 'Preheat your oven before baking.', '', '', '8', '14', '23');
 
 
 /*meal_recipe*/
