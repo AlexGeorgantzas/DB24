@@ -32,8 +32,8 @@ group by cook.cook_id, concat(cook.firstname,' ',cook.lastname),national_cuisine
 
 --===========================================
 --3.3 ------------------------------------------------------------------------
---vreite tous neous mageieres 
-select cook.cook_id, count(*)
+--vreite tous neous mageieres OK
+select cook.cook_id , CONCAT(cook.firstname, ' ', cook.lastname) AS full_name , count(*)
 from cook 
 inner join ep_info on ep_info.cook_id = cook.cook_id
 where  (year(now()) - year(cast(cook.date_of_birth as datetime))) <=30
@@ -44,12 +44,34 @@ group by cook.cook_id
 --3.4 ------------------------------------------------------------------------
 --vreite tous mageires pou den exoun simetasxei pote san krites se kapoio episodeio
 
-select cook_id,  concat(cook.firstname,' ',cook.lastname)
-from cook 
-left join episode ep1 on ep1.judge_1 = cook.cook_id 
-left join episode ep2 on ep2.judge_2 = cook.cook_id 
-left join episode ep3 on ep3.judge_2 = cook.cook_id 
-where cook.cook_id is null
+SELECT 
+    cook.cook_ID,  
+    CONCAT(cook.firstname, ' ', cook.lastname) AS full_name
+FROM 
+    cook 
+LEFT JOIN 
+    episode ep1 ON ep1.judge_1 = cook.cook_ID 
+LEFT JOIN 
+    episode ep2 ON ep2.judge_2 = cook.cook_ID 
+LEFT JOIN 
+    episode ep3 ON ep3.judge_3 = cook.cook_ID 
+WHERE 
+    ep1.judge_1 IS NULL AND ep2.judge_2 IS NULL AND ep3.judge_3 IS NULL;
+
+-- second one better 
+SELECT 
+    cook.cook_ID,  
+    CONCAT(cook.firstname, ' ', cook.lastname) AS full_name
+FROM 
+    cook
+WHERE 
+    NOT EXISTS (
+        SELECT 1
+        FROM episode e
+        WHERE e.judge_1 = cook.cook_ID 
+           OR e.judge_2 = cook.cook_ID 
+           OR e.judge_3 = cook.cook_ID
+    );
 
 --3.5 ------------------------------------------------------------------------
 --poioi krites exoun simmetasxei ston idio arithmo episodeion se diastima enos etous
@@ -154,6 +176,17 @@ WHERE cook_count <= (
 --3.8. ------------------------------------------------------------------------
 
 --3.9. ------------------------------------------------------------------------
+SELECT 
+    e.season,
+    AVG(r.carbs) AS average_carbs
+FROM 
+    episode e
+JOIN 
+    ep_info ei ON e.ep_ID = ei.ep_ID
+JOIN 
+    recipe r ON ei.recipe_ID = r.recipe_ID
+GROUP BY 
+    e.season;
 
 --3.10. ------------------------------------------------------------------------
 
