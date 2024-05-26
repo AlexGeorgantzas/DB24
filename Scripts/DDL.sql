@@ -71,6 +71,7 @@ CREATE  TABLE equipment (
     eq_name VARCHAR(255) NOT NULL UNIQUE,
     instructions TEXT NOT NULL,
     INDEX fk_image_id_idx (image_ID ASC),
+    INDEX eq_name_idx (eq_name ASC),
     FOREIGN KEY (image_ID) REFERENCES images(image_ID) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
@@ -93,6 +94,7 @@ CREATE  TABLE cook (
     rank ENUM('cook C', 'cook B' , 'cook A' , 'assistant chef' , 'chef')  NOT NULL,
     UNIQUE INDEX cook_user_idx (cook_ID ASC, user_ID ASC),
     INDEX fk_image_id_idx (image_ID ASC),
+    INDEX cook_name_idx (firstname ASC, lastname ASC),
     FOREIGN KEY (image_ID) REFERENCES images(image_ID) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
@@ -125,6 +127,7 @@ CREATE  TABLE recipe (
     UNIQUE INDEX recipe_cuisine_main_ingr (recipe_ID ASC, national_cuisine_ID ASC, main_ingredient_ID ASC),
     INDEX fk_main_ingredient_ID (main_ingredient_ID ASC),
     INDEX national_cuisine_ID (national_cuisine_ID ASC),
+    INDEX recipe_name_idx (recipe_name ASC),
     FOREIGN KEY (national_cuisine_ID) REFERENCES national_cuisine(national_cuisine_ID) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (main_ingredient_ID) REFERENCES ingredient(ingredient_ID) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
