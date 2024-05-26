@@ -171,3 +171,31 @@ HAVING
                       GROUP BY c2.cook_ID
                       ORDER BY COUNT(ei2.ep_ID) DESC
                       LIMIT 1) - 5;
+
+
+-- 3.11
+
+SELECT 
+    CONCAT(j.firstname, ' ', j.lastname) AS judge_name,
+    CONCAT(c.firstname, ' ', c.lastname) AS cook_name,
+    SUM(
+        CASE
+            WHEN e.judge_1 = j.cook_ID THEN ei.rating_1
+            WHEN e.judge_2 = j.cook_ID THEN ei.rating_2
+            WHEN e.judge_3 = j.cook_ID THEN ei.rating_3
+            ELSE 0
+        END
+    ) AS total_rating
+FROM 
+    ep_info ei
+JOIN 
+    cook c ON ei.cook_ID = c.cook_ID
+JOIN 
+    episode e ON ei.ep_ID = e.ep_ID
+JOIN 
+    cook j ON e.judge_1 = j.cook_ID OR e.judge_2 = j.cook_ID OR e.judge_3 = j.cook_ID
+GROUP BY 
+    j.cook_ID, j.firstname, j.lastname, c.cook_ID, c.firstname, c.lastname
+ORDER BY 
+    total_rating DESC
+LIMIT 5;
