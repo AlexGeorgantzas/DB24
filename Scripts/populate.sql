@@ -16,7 +16,16 @@ INSERT INTO food_group (image_ID,food_group_name, food_group_desc, category) VAL
 INSERT INTO food_group (image_ID,food_group_name, food_group_desc, category) VALUES (1,'Added Fats and Oils  Olives  and Nuts', 'Healthy fats from oils  olives  and nuts  important for heart health and overall wellness.', 'oils');
 
 
-select * from Ingredient;
+SELECT 
+    nc.cuisine_name,
+    COUNT(r.recipe_ID) AS recipe_count
+FROM 
+    national_cuisine nc
+LEFT JOIN 
+    recipe r ON nc.national_cuisine_ID = r.national_cuisine_ID
+GROUP BY 
+    nc.national_cuisine_ID, nc.cuisine_name;
+
 
 /*ingredients */
 desc ingredient;
