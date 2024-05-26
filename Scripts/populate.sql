@@ -1,14 +1,6 @@
-<<<<<<< HEAD
-/* images */
-SELECT * FROM images;
-
-INSERT INTO images (image_desc, image_url) 
-VALUES ('test', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.delish.com%2Fcooking%2Frecipe-ideas%2Frecipes%2Fa52114%2Feasy-basic-crepe-recipe%2F&psig=AOvVaw0FPuwJVgUgzNg4utHzcAZ-&ust=1716736759115000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCFoveMqYYDFQAAAAAdAAAAABAE');
-=======
 /*images*/
 insert into images (image_desc, image_url) values('test', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.delish.com%2Fcooking%2Frecipe-ideas%2Frecipes%2Fa52114%2Feasy-basic-crepe-recipe%2F&psig=AOvVaw0FPuwJVgUgzNg4utHzcAZ-&ust=1716736759115000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCFoveMqYYDFQAAAAAdAAAAABAE');
 
->>>>>>> origin
 
 INSERT INTO food_group (image_ID,food_group_name, food_group_desc, category) VALUES (1,'Vegetables', 'A variety of fresh  colorful vegetables that provide essential vitamins  minerals  and fiber.', 'vegeterian');
 INSERT INTO food_group (image_ID,food_group_name, food_group_desc, category) VALUES (1,'Fruits', 'Sweet and nutritious fruits  rich in vitamins  antioxidants  and natural sugars.', 'fruits');
@@ -22,10 +14,7 @@ INSERT INTO food_group (image_ID,food_group_name, food_group_desc, category) VAL
 INSERT INTO food_group (image_ID,food_group_name, food_group_desc, category) VALUES (1,'Added Fats and Oils  Olives  and Nuts', 'Healthy fats from oils  olives  and nuts  important for heart health and overall wellness.', 'oils');
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin
 /*ingredients */
 
 INSERT INTO Ingredient (ingr_name, calories, unit, food_group_id, image_ID) VALUES ('chickpeas', '23.45', 'gr', '5', '1');
