@@ -1,4 +1,4 @@
-CREATE PROCEDURE AssignCooksAndJudges()
+CREATE PROCEDURE AssignCooksAndJudges_3()
 BEGIN
 
 drop table if exists  temp_cuisines;
@@ -104,7 +104,18 @@ set eps.judge_3 = judges.cook_id where id in(3,6,9,12,15,18,21,24,27,30);
 
 /* insert into episode*/
 insert into episode(ep_id ,image_id,judge_1,judge_2,judge_3,season,episode)
-select rank() over(order by id1) + ifnull((select max(ep_id) from episode),0) ep_id,1  image_id, judge_1, judge_2, judge_3, (select ifnull(max(season),0)+1  from episode) season, id1 episode from  eps;
+SELECT (SELECT MAX(ep_id) + 1 FROM episode) AS ep_id,
+       1 AS image_id,
+       MIN(judge_1),
+       MIN(judge_2),
+       MIN(judge_3),
+       case when (select count(*) from episode where season = (select max(season) from episode) group by season )<10 then (select max(season) from episode)
+       else (select max(season) from episode)+1 end
+        season,
+       id1
+FROM eps;
+
+
 
 /*insert into ep_info*/
 insert into ep_info (ep_id,cook_id,recipe_id,rating_1,rating_2,rating_3,avg_rating)
@@ -123,6 +134,8 @@ SELECT
     0 AS avg_rating
 FROM 
     eps;
+
+
 
 
 END
