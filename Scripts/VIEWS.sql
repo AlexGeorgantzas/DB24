@@ -1,13 +1,13 @@
 --queries
 --3.1. mesos oros aksiologiseon ana mafeira kai ethniki kouzina
-
+CREATE VIEW 3.1.1 AS
 select cook.cook_ID,avg(rating_1+rating_2+rating_3) avgrating
 from cook 
 inner join ep_info on ep_info.cook_id = cook.cook_id
 group by cook.cook_ID
 
 
-
+CREATE VIEW 3.1.2 AS
 select national_cuisine.national_cuisine_ID, national_cuisine.cuisine_name, avg(rating_1+rating_2+rating_3) 
 from ep_info 
 inner join recipe on recipe.recipe_id = ep_info.recipe_id
@@ -19,8 +19,7 @@ group by national_cuisine.national_cuisine_ID, national_cuisine.cuisine_name
 --3.2 gia dedomeni ethniki kouzina kai etos poioi mageires anikoun se autin kai 
 --poioi mageires simetixan se episodeia?
 
---!! auto to ana etos pou leei den vgazei noima giati 
---gia na paro to ana etos prepei na exoun simetasxei oi mageires se ep
+CREATE VIEW 3.2 AS
 select national_cuisine.cuisine_name, cook.cook_id, concat(cook.firstname,' ',cook.lastname),season
 from cook 
 left join expertise on expertise.cook_id = cook.cook_id
@@ -33,6 +32,7 @@ group by cook.cook_id, concat(cook.firstname,' ',cook.lastname),national_cuisine
 --===========================================
 --3.3 ------------------------------------------------------------------------
 --vreite tous neous mageieres OK
+CREATE VIEW 3.3 AS
 select cook.cook_id , CONCAT(cook.firstname, ' ', cook.lastname) AS full_name , count(*)
 from cook 
 inner join ep_info on ep_info.cook_id = cook.cook_id
@@ -43,7 +43,7 @@ group by cook.cook_id
 --===========================================
 --3.4 ------------------------------------------------------------------------
 --vreite tous mageires pou den exoun simetasxei pote san krites se kapoio episodeio
-
+CREATE VIEW 3.4 AS
 SELECT 
     cook.cook_ID,  
     CONCAT(cook.firstname, ' ', cook.lastname) AS full_name
@@ -59,6 +59,7 @@ WHERE
     ep1.judge_1 IS NULL AND ep2.judge_2 IS NULL AND ep3.judge_3 IS NULL;
 
 -- second one better 
+CREATE VIEW 3.4 AS
 SELECT 
     cook.cook_ID,  
     CONCAT(cook.firstname, ' ', cook.lastname) AS full_name
@@ -74,6 +75,7 @@ WHERE
     );
 
 --3.5 ------------------------------------------------------------------------
+CREATE VIEW 3.5 AS
 SELECT 
     e.season,
     CONCAT(c.firstname, ' ', c.lastname) AS judge_name,
@@ -129,6 +131,7 @@ ORDER BY
 ----======================================================
 
 -- Create the temporary table
+CREATE VIEW 3.1 AS
 CREATE TEMPORARY TABLE temp_judge_participations (
     judge VARCHAR(255),
     c INT,
@@ -136,6 +139,7 @@ CREATE TEMPORARY TABLE temp_judge_participations (
 );
 
 -- Insert data into the temporary table
+CREATE VIEW 3.1 AS
 INSERT INTO temp_judge_participations (judge, c, season)
 SELECT judge, c, season
 FROM (
@@ -156,6 +160,7 @@ FROM (
 ) AS xx;
 
 -- Query the temporary table
+CREATE VIEW 3.1 AS
 SELECT judge, season, c
 FROM temp_judge_participations
 WHERE c IN (
@@ -172,7 +177,7 @@ ORDER BY season, c DESC, judge;
 
 --3.6. ------------------------------------------------------------------------
 --- 3.6
-
+CREATE VIEW 3.6.1 AS
 SELECT l1.label_description AS label1, l2.label_description AS label2, COUNT(*) AS count
 FROM label_recipe lr1
 JOIN label_recipe lr2 ON lr1.recipe_ID = lr2.recipe_ID AND lr1.label_ID < lr2.label_ID
@@ -185,7 +190,7 @@ LIMIT 3;
 
 
 -- 3.6 Alternative Query Plan
-
+CREATE VIEW 3.6.2 AS
 SELECT STRAIGHT_JOIN l1.label_description AS label1, l2.label_description AS label2, COUNT(*) AS count
 FROM label_recipe lr1
 FORCE INDEX (recipe_label_idx)
@@ -202,7 +207,7 @@ LIMIT 3;
 
 
 -- 3.6 Traces
-
+CREATE VIEW 3.6.3 AS
 EXPLAIN SELECT l1.label_description AS label1, l2.label_description AS label2, COUNT(*) AS count
 FROM label_recipe lr1
 JOIN label_recipe lr2 ON lr1.recipe_ID = lr2.recipe_ID AND lr1.label_ID < lr2.label_ID
@@ -215,7 +220,7 @@ LIMIT 3;
 
 
 -- 3.6 Traces
-
+CREATE VIEW 3.6.4 AS
 EXPLAIN SELECT STRAIGHT_JOIN l1.label_description AS label1, l2.label_description AS label2, COUNT(*) AS count
 FROM label_recipe lr1
 FORCE INDEX (recipe_label_idx)
@@ -233,6 +238,7 @@ LIMIT 3
 --vreite olous tous mageires pou simetixan toulaxiston 5 ligoteres fores 
 --apo ton mageira me tis perisoteres simmetohes se episodeia
 ---AUTO MALLON
+CREATE VIEW 3.7 AS
 SELECT cook_ID
 FROM (
     SELECT cook_ID, COUNT(*) AS cook_count
@@ -249,6 +255,7 @@ WHERE cook_count <= (
 );
 
 ----------
+CREATE VIEW 3.7 AS
 SELECT 
     c1.cook_ID AS cook_id,
     CONCAT(c1.firstname, ' ', c1.lastname) AS cook_name,
@@ -270,6 +277,7 @@ HAVING
                       LIMIT 1) - 5;
 
 --3.8. ------------------------------------------------------------------------
+CREATE VIEW 3.8 AS
 SELECT e.ep_ID, e.season, e.episode, COUNT(re.eq_ID) AS equipment_count
 FROM episode e
 JOIN ep_info ei ON e.ep_ID = ei.ep_ID
@@ -280,7 +288,7 @@ LIMIT 1;
 
 
 -- 3.8 Alternative Query Plan
-
+CREATE VIEW 3.8 AS
 SELECT STRAIGHT_JOIN e.ep_ID, e.season, e.episode, COUNT(re.eq_ID) AS equipment_count
 FROM episode e
 JOIN ep_info ei FORCE INDEX (ep_ID_idx)
@@ -293,7 +301,7 @@ LIMIT 1;
 
 
 -- 3.8 Traces
-
+CREATE VIEW 3.8 AS
 EXPLAIN SELECT e.ep_ID, e.season, e.episode, COUNT(re.eq_ID) AS equipment_count
 FROM episode e
 JOIN ep_info ei ON e.ep_ID = ei.ep_ID
@@ -304,7 +312,7 @@ LIMIT 1;
 
 
 -- 3.8 Alternative Query Plan Traces
-
+CREATE VIEW 3.8 AS
 EXPLAIN SELECT STRAIGHT_JOIN e.ep_ID, e.season, e.episode, COUNT(re.eq_ID) AS equipment_count
 FROM episode e
 JOIN ep_info ei FORCE INDEX (ep_ID_idx)
@@ -315,6 +323,7 @@ GROUP BY e.ep_ID, e.season, e.episode
 ORDER BY equipment_count DESC
 LIMIT 1;
 --3.9. ------------------------------------------------------------------------
+CREATE VIEW 3.9 AS
 SELECT 
     e.season,
     AVG(r.carbs) AS average_carbs
@@ -328,6 +337,7 @@ GROUP BY
     e.season;
 
 --3.10. ------------------------------------------------------------------------
+CREATE VIEW 3.10 AS
 SELECT 
     CONCAT(e1.season, '-', e2.season) AS consecutive_seasons,
     nc.cuisine_name AS national_cuisine,
@@ -350,6 +360,7 @@ GROUP BY
 ORDER BY 
     consecutive_seasons, appearances DESC;
 --3.11. ------------------------------------------------------------------------
+CREATE VIEW 3.11 AS
 SELECT 
     CONCAT(j.firstname, ' ', j.lastname) AS judge_name,
     CONCAT(c.firstname, ' ', c.lastname) AS cook_name,
@@ -375,6 +386,7 @@ ORDER BY
     total_rating DESC
 LIMIT 5;
 --3.12. ------------------------------------------------------------------------
+CREATE VIEW 3.12 AS
 SELECT e.ep_ID
 FROM (
     SELECT e.ep_ID, SUM(r.difficulty_level) AS total_difficulty
@@ -389,6 +401,7 @@ LIMIT 1;
 --3.13. ------------------------------------------------------------------------
 --poio episodeio sigentrose 
 --ton xamilitero vathmo epaggelmatikis katartisis(krites kai mageires)
+CREATE VIEW 3.13 AS
 SELECT episode, season
 FROM (
     SELECT e.ep_ID AS episode, e.season,
@@ -401,6 +414,7 @@ FROM (
 ORDER BY avg_rank_level ASC
 LIMIT 1;
 
+CREATE VIEW 3.1 AS
 SELECT episode, season,avg_rank_level
 FROM (
     SELECT e.ep_ID AS episode, e.season,
@@ -447,7 +461,7 @@ WHERE e.ep_ID = 4;
 
 --3.14. poia thematiki ennotita exei emfanistei tis perisoteres fores ston diagonismo
 --1st test ok , need second one
-
+CREATE VIEW 3.14 AS
 SELECT theme_ID, theme_name, c
 FROM (
     SELECT theme.theme_ID, theme_name, COUNT(DISTINCT ep_id) AS c
@@ -464,6 +478,7 @@ FROM (
 --3.15. poies omades trofimon den exoun emfanistei pote ston diagonismo
 
 -- List all food groups that are not included in any episode
+CREATE VIEW 3.15 AS
 SELECT fg.food_group_name
 FROM food_group fg
 WHERE fg.food_group_ID NOT IN (
@@ -495,4 +510,4 @@ WHERE ei.ep_ID = 4
 ORDER BY e.ep_ID, ei.cook_ID;
 
 
-select * from ep_info where ep_id = 5
+select * from ep_info
